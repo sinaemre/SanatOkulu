@@ -112,6 +112,18 @@
   <ItemGroup>
     <None Include="Resources\plus-146037_960_720.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\250px-The_Scream.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disavurumcu-sanat-eserleri.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c0a98a322e08934469d60d6db3741c69.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mona-lisa-painting-edvard-munch-scream-wallpaper-preview.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

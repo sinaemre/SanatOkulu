@@ -35,18 +35,21 @@ namespace SanatOkulu
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtAd = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbxSanatci = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.mtbYil = new System.Windows.Forms.MaskedTextBox();
             this.btnEkle = new System.Windows.Forms.Button();
+            this.mtbYil = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbxSanatci = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtAd = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmiSanatcilar = new System.Windows.Forms.ToolStripMenuItem();
             this.lvwEserler = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pboYeniSanatci = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboYeniSanatci)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,38 +76,33 @@ namespace SanatOkulu
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 22);
+            this.groupBox1.Location = new System.Drawing.Point(12, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(275, 339);
+            this.groupBox1.Size = new System.Drawing.Size(289, 339);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sanat Eseri";
             // 
-            // txtAd
+            // btnEkle
             // 
-            this.txtAd.Location = new System.Drawing.Point(11, 64);
-            this.txtAd.Name = "txtAd";
-            this.txtAd.Size = new System.Drawing.Size(258, 26);
-            this.txtAd.TabIndex = 1;
+            this.btnEkle.BackColor = System.Drawing.Color.Peru;
+            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEkle.Location = new System.Drawing.Point(152, 238);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(117, 33);
+            this.btnEkle.TabIndex = 6;
+            this.btnEkle.Text = "EKLE";
+            this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
-            // label2
+            // mtbYil
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(7, 101);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Sanatçısı";
-            // 
-            // cbxSanatci
-            // 
-            this.cbxSanatci.FormattingEnabled = true;
-            this.cbxSanatci.Location = new System.Drawing.Point(11, 124);
-            this.cbxSanatci.Name = "cbxSanatci";
-            this.cbxSanatci.Size = new System.Drawing.Size(219, 28);
-            this.cbxSanatci.TabIndex = 3;
+            this.mtbYil.HidePromptOnLeave = true;
+            this.mtbYil.Location = new System.Drawing.Point(11, 188);
+            this.mtbYil.Mask = "####";
+            this.mtbYil.Name = "mtbYil";
+            this.mtbYil.Size = new System.Drawing.Size(258, 26);
+            this.mtbYil.TabIndex = 5;
             // 
             // label3
             // 
@@ -117,38 +115,65 @@ namespace SanatOkulu
             this.label3.TabIndex = 4;
             this.label3.Text = "Yapıldığı Yılı";
             // 
-            // mtbYil
+            // cbxSanatci
             // 
-            this.mtbYil.HidePromptOnLeave = true;
-            this.mtbYil.Location = new System.Drawing.Point(11, 188);
-            this.mtbYil.Mask = "####";
-            this.mtbYil.Name = "mtbYil";
-            this.mtbYil.Size = new System.Drawing.Size(258, 26);
-            this.mtbYil.TabIndex = 5;
+            this.cbxSanatci.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSanatci.FormattingEnabled = true;
+            this.cbxSanatci.Location = new System.Drawing.Point(11, 124);
+            this.cbxSanatci.Name = "cbxSanatci";
+            this.cbxSanatci.Size = new System.Drawing.Size(219, 28);
+            this.cbxSanatci.TabIndex = 3;
             // 
-            // btnEkle
+            // label2
             // 
-            this.btnEkle.BackColor = System.Drawing.Color.Peru;
-            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnEkle.Location = new System.Drawing.Point(152, 238);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(117, 33);
-            this.btnEkle.TabIndex = 6;
-            this.btnEkle.Text = "EKLE";
-            this.btnEkle.UseVisualStyleBackColor = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(7, 101);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Sanatçısı";
+            // 
+            // txtAd
+            // 
+            this.txtAd.Location = new System.Drawing.Point(11, 64);
+            this.txtAd.Name = "txtAd";
+            this.txtAd.Size = new System.Drawing.Size(258, 26);
+            this.txtAd.TabIndex = 1;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSanatcilar});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(995, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmiSanatcilar
+            // 
+            this.tsmiSanatcilar.Name = "tsmiSanatcilar";
+            this.tsmiSanatcilar.Size = new System.Drawing.Size(70, 20);
+            this.tsmiSanatcilar.Text = "Sanatçılar";
+            this.tsmiSanatcilar.Click += new System.EventHandler(this.tsmiSanatcilar_Click);
             // 
             // lvwEserler
             // 
             this.lvwEserler.BackColor = System.Drawing.Color.SaddleBrown;
+            this.lvwEserler.BackgroundImage = global::SanatOkulu.Properties.Resources.mona_lisa_painting_edvard_munch_scream_wallpaper_preview;
+            this.lvwEserler.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvwEserler.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.lvwEserler.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.lvwEserler.Font = new System.Drawing.Font("Algerian", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvwEserler.ForeColor = System.Drawing.Color.Snow;
             this.lvwEserler.HideSelection = false;
-            this.lvwEserler.Location = new System.Drawing.Point(293, 22);
+            this.lvwEserler.Location = new System.Drawing.Point(307, 38);
             this.lvwEserler.Name = "lvwEserler";
-            this.lvwEserler.Size = new System.Drawing.Size(508, 466);
+            this.lvwEserler.Size = new System.Drawing.Size(683, 434);
             this.lvwEserler.TabIndex = 2;
             this.lvwEserler.UseCompatibleStateImageBehavior = false;
             this.lvwEserler.View = System.Windows.Forms.View.Details;
@@ -166,7 +191,7 @@ namespace SanatOkulu
             // columnHeader3
             // 
             this.columnHeader3.Text = "Yıl";
-            this.columnHeader3.Width = 141;
+            this.columnHeader3.Width = 138;
             // 
             // pboYeniSanatci
             // 
@@ -178,23 +203,29 @@ namespace SanatOkulu
             this.pboYeniSanatci.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboYeniSanatci.TabIndex = 7;
             this.pboYeniSanatci.TabStop = false;
+            this.pboYeniSanatci.Click += new System.EventHandler(this.pboYeniSanatci_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
-            this.ClientSize = new System.Drawing.Size(813, 500);
+            this.ClientSize = new System.Drawing.Size(995, 479);
             this.Controls.Add(this.lvwEserler);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "SANAT OKULU";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboYeniSanatci)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -213,6 +244,8 @@ namespace SanatOkulu
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSanatcilar;
     }
 }
 
