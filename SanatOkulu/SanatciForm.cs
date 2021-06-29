@@ -1,5 +1,4 @@
-﻿using SanatOkulu.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,10 +10,9 @@ using System.Windows.Forms;
 
 namespace SanatOkulu
 {
-    public partial class Form1 : Form
+    public partial class SanatciForm : Form
     {
-        SanatOkuluContext db = new SanatOkuluContext();
-        public Form1()
+        public SanatciForm()
         {
             InitializeComponent();
         }
