@@ -54,20 +54,29 @@ namespace SanatOkulu
                 MessageBox.Show("Lütfen eserin adını giriniz");
                 return;
             }
-            
+
             if (cbxSanatci.SelectedIndex == -1)
             {
                 MessageBox.Show("Lütfen sanatçının adını giriniz");
                 return;
             }
 
-            var eser = new Eser()
+            if (duzenlenen == null)
             {
-                Ad = ad,
-                SanatciId = (int)cbxSanatci.SelectedValue,
-                Yil = mtbYil.Text == "" ? null as int? : Convert.ToInt32(mtbYil.Text)
-            };
-            db.Eserler.Add(eser);
+                var eser = new Eser()
+                {
+                    Ad = ad,
+                    SanatciId = (int)cbxSanatci.SelectedValue,
+                    Yil = mtbYil.Text == "" ? null as int? : Convert.ToInt32(mtbYil.Text)
+                };
+                db.Eserler.Add(eser);
+            }
+            else
+            {
+                duzenlenen.Ad = ad;
+                duzenlenen.SanatciId = (int)cbxSanatci.SelectedValue;
+                duzenlenen.Yil = mtbYil.Text == "" ? null as int? : Convert.ToInt32(mtbYil.Text);
+            }
             db.SaveChanges();
             FormuResetle();
             EserleriListele();
@@ -76,14 +85,15 @@ namespace SanatOkulu
         private void EserleriListele()
         {
             lvwEserler.Items.Clear();
-            foreach (Eser eser in db.Eserler.OrderBy(x=>x.Yil))
+            foreach (Eser eser in db.Eserler.OrderBy(x => x.Yil))
             {
                 ListViewItem lvi = new ListViewItem(eser.Ad);
                 lvi.SubItems.Add(eser.Sanatci.Ad);
                 lvi.SubItems.Add(eser.Yil.ToString());
+                lvi.Tag = eser;
                 lvwEserler.Items.Add(lvi);
             }
-            
+
         }
 
         private void FormuResetle()
@@ -92,11 +102,51 @@ namespace SanatOkulu
             mtbYil.Clear();
             cbxSanatci.SelectedIndex = -1;
             txtAd.Focus();
+            duzenlenen = null;
+            btnİptal.Hide();
+            btnEkle.Text = "Ekle";
+            lvwEserler.Enabled = true;
         }
 
         private void tsmiSanatcilar_Click(object sender, EventArgs e)
         {
             SanatciFormuAc();
+        }
+
+        private void lvwEserler_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && lvwEserler.SelectedItems.Count == 1)
+            {
+                DialogResult dr = MessageBox.Show("Silmek istediğinize emin misiniz?", "Silme Onayı?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button1);
+                if (dr == DialogResult.Yes)
+                {
+                    Eser eser = (Eser)lvwEserler.SelectedItems[0].Tag;
+                    db.Eserler.Remove(eser);
+                    db.SaveChanges();
+                    EserleriListele();
+                }
+            }
+        }
+
+        Eser duzenlenen;
+        private void lvwEserler_DoubleClick(object sender, EventArgs e)
+        {
+            var lvi = lvwEserler.SelectedItems[0];
+            duzenlenen = (Eser)lvi.Tag;
+            txtAd.Text = duzenlenen.Ad;
+            cbxSanatci.SelectedItem = duzenlenen.Sanatci;
+            mtbYil.Text = duzenlenen.Yil.ToString();
+            btnEkle.Text = "Kaydet";
+            lvwEserler.Enabled = false;
+            btnİptal.Show();
+        }
+
+        private void btnİptal_Click(object sender, EventArgs e)
+        {
+            FormuResetle();
         }
     }
 }

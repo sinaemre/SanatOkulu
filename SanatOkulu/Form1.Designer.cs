@@ -48,6 +48,7 @@ namespace SanatOkulu
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pboYeniSanatci = new System.Windows.Forms.PictureBox();
+            this.btnİptal = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboYeniSanatci)).BeginInit();
@@ -66,6 +67,7 @@ namespace SanatOkulu
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnİptal);
             this.groupBox1.Controls.Add(this.pboYeniSanatci);
             this.groupBox1.Controls.Add(this.btnEkle);
             this.groupBox1.Controls.Add(this.mtbYil);
@@ -87,7 +89,7 @@ namespace SanatOkulu
             // 
             this.btnEkle.BackColor = System.Drawing.Color.Peru;
             this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnEkle.Location = new System.Drawing.Point(152, 238);
+            this.btnEkle.Location = new System.Drawing.Point(11, 237);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(117, 33);
             this.btnEkle.TabIndex = 6;
@@ -170,6 +172,7 @@ namespace SanatOkulu
             this.columnHeader3});
             this.lvwEserler.Font = new System.Drawing.Font("Algerian", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvwEserler.ForeColor = System.Drawing.Color.Snow;
+            this.lvwEserler.FullRowSelect = true;
             this.lvwEserler.HideSelection = false;
             this.lvwEserler.Location = new System.Drawing.Point(307, 38);
             this.lvwEserler.Name = "lvwEserler";
@@ -177,6 +180,8 @@ namespace SanatOkulu
             this.lvwEserler.TabIndex = 2;
             this.lvwEserler.UseCompatibleStateImageBehavior = false;
             this.lvwEserler.View = System.Windows.Forms.View.Details;
+            this.lvwEserler.DoubleClick += new System.EventHandler(this.lvwEserler_DoubleClick);
+            this.lvwEserler.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvwEserler_KeyDown);
             // 
             // columnHeader1
             // 
@@ -204,6 +209,19 @@ namespace SanatOkulu
             this.pboYeniSanatci.TabIndex = 7;
             this.pboYeniSanatci.TabStop = false;
             this.pboYeniSanatci.Click += new System.EventHandler(this.pboYeniSanatci_Click);
+            // 
+            // btnİptal
+            // 
+            this.btnİptal.BackColor = System.Drawing.Color.Peru;
+            this.btnİptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnİptal.Location = new System.Drawing.Point(152, 237);
+            this.btnİptal.Name = "btnİptal";
+            this.btnİptal.Size = new System.Drawing.Size(117, 33);
+            this.btnİptal.TabIndex = 8;
+            this.btnİptal.Text = "İptal";
+            this.btnİptal.UseVisualStyleBackColor = false;
+            this.btnİptal.Visible = false;
+            this.btnİptal.Click += new System.EventHandler(this.btnİptal_Click);
             // 
             // Form1
             // 
@@ -246,6 +264,7 @@ namespace SanatOkulu
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiSanatcilar;
+        private System.Windows.Forms.Button btnİptal;
     }
 }
 
