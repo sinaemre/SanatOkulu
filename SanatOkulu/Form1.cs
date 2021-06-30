@@ -91,15 +91,30 @@ namespace SanatOkulu
         private void EserleriListele()
         {
             lvwEserler.Items.Clear();
+            
+            ImageList largeimageList = new ImageList();
+            largeimageList.ImageSize = new Size(128, 128);
+
+            ImageList smallimageList = new ImageList();
+            smallimageList.ImageSize = new Size(128, 128);
+
+
             foreach (Eser eser in db.Eserler.OrderBy(x => x.Yil))
             {
                 ListViewItem lvi = new ListViewItem(eser.Ad);
                 lvi.SubItems.Add(eser.Sanatci.Ad);
                 lvi.SubItems.Add(eser.Yil.ToString());
                 lvi.Tag = eser;
+                if (eser.Resim != null)
+                {
+                    largeimageList.Images.Add(eser.Resim, Yardimci.ResimGetir(eser.Resim));
+                    smallimageList.Images.Add(eser.Resim, Yardimci.ResimGetir(eser.Resim));
+                }
+                lvi.ImageKey = eser.Resim;
                 lvwEserler.Items.Add(lvi);
             }
-
+            lvwEserler.LargeImageList = largeimageList;
+            lvwEserler.SmallImageList = smallimageList;
         }
 
         private void FormuResetle()
@@ -167,6 +182,49 @@ namespace SanatOkulu
             {
                 pboResim.Image = Image.FromFile(ofdResim.FileName);
             }
+        }
+
+        private void cboGorunum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboGorunum.SelectedIndex == -1)
+                return;
+            switch ((string)cboGorunum.SelectedItem)
+            {
+                case "Büyük Simgeler":
+                    lvwEserler.View = View.LargeIcon;
+                    break;
+                case "Küçük Simgeler":
+                    lvwEserler.View = View.SmallIcon;
+                    break;
+                case "Listele":
+                    lvwEserler.View = View.List;
+                    break;
+                case "Ayrntılar":
+                    lvwEserler.View = View.Details;
+                    break;
+                case "Döşemeler":
+                    lvwEserler.View = View.Tile;
+                    break;
+                default:
+                    lvwEserler.View = View.Tile;
+                    break;
+            }
+        }
+
+        private void tsmiResmiYeniPenceredeAçToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvwEserler.SelectedItems.Count != 1) return;
+          
+            Eser eser = (Eser)lvwEserler.SelectedItems[0].Tag;
+            
+            if (eser.Resim == null) return;
+
+            new ResimForm(eser.Ad, Yardimci.ResimGetir(eser.Resim)).Show();
+        }
+
+        private void cmsEserler_Opening(object sender, CancelEventArgs e)
+        {
+            e.Cancel = lvwEserler.SelectedItems.Count != 1;
         }
     }
 }
