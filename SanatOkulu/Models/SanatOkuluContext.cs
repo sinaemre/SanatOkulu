@@ -10,7 +10,8 @@ namespace SanatOkulu.Models
     public class SanatOkuluContext : DbContext
     {
         public SanatOkuluContext() : base("name = BaglantiCumlem")
-        { 
+        {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SanatOkuluContext>());
         }
         public DbSet<Sanatci> Sanatcilar { get; set; }
         public DbSet<Eser> Eserler { get; set; }

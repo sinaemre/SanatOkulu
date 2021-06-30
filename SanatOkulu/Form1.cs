@@ -106,6 +106,8 @@ namespace SanatOkulu
             btnİptal.Hide();
             btnEkle.Text = "Ekle";
             lvwEserler.Enabled = true;
+            pboResim.Image = null;
+            ofdResim.FileName = null;
         }
 
         private void tsmiSanatcilar_Click(object sender, EventArgs e)
@@ -147,6 +149,17 @@ namespace SanatOkulu
         private void btnİptal_Click(object sender, EventArgs e)
         {
             FormuResetle();
+        }
+
+        private void pboResim_Click(object sender, EventArgs e)
+        {
+            DialogResult db = ofdResim.ShowDialog();
+
+            if (db == DialogResult.OK)
+            {
+                pboResim.Image = Image.FromFile(ofdResim.FileName);
+                Yardimci.ResimKaydet(ofdResim.FileName);
+            }
         }
     }
 }

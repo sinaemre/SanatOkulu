@@ -15,6 +15,9 @@ namespace SanatOkulu.Models
         [Required,MaxLength(100)]
         public string Ad { get; set; }
         public int? Yil { get; set; }
+
+        [MaxLength(255)]
+        public string Resim { get; set; }
         public int SanatciId { get; set; }
         public virtual Sanatci Sanatci { get; set; }
     }
