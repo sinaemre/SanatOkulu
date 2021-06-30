@@ -232,10 +232,6 @@ namespace SanatOkulu
             this.columnHeader3.Text = "Yıl";
             this.columnHeader3.Width = 138;
             // 
-            // ofdResim
-            // 
-            this.ofdResim.FileName = "openFileDialog1";
-            // 
             // pboResim
             // 
             this.pboResim.BackColor = System.Drawing.Color.Gainsboro;
